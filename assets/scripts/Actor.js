@@ -1,5 +1,5 @@
-var Types = require('Types');
-var Utils = require('Utils');
+var Types = require('Types'); // scripts/module/Types.js
+var Utils = require('Utils'); // scripts/module/Utils.js
 var ActorPlayingState = Types.ActorPlayingState;
 
 cc.Class({

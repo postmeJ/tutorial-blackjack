@@ -23,6 +23,7 @@ function getMinMaxPoint (cards) {
     };
 }
 
+// Math.min(10, card.point)是因为
 function isBust (cards) {
     var sum = 0;
     for (var i = 0; i < cards.length; i++) {
