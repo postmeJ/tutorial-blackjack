@@ -1,3 +1,5 @@
+// 这种写法很别捏
+// 还不如直接用es6 class
 var Suit = cc.Enum({
     Spade: 1,   // 黑桃
     Heart: 2,   // 红桃
@@ -6,6 +8,8 @@ var Suit = cc.Enum({
 });
 
 var A2_10JQK = 'NAN,A,2,3,4,5,6,7,8,9,10,J,Q,K'.split(',');
+
+// 类的思想,只是把一些属性抽出来
 
 /**
  * 扑克牌类，只用来表示牌的基本属性，不包含游戏逻辑，所有属性只读，
@@ -29,7 +33,7 @@ function Card (point, suit) {
          * @property {Number} id - 可能的值为 0 到 51
          */
         id: {
-            value: (suit - 1) * 13 + (point - 1),
+            value: (suit - 1) * 13 + (point - 1), // suit: Heart point 10 => value: 22 
             writable: false
         },
         //

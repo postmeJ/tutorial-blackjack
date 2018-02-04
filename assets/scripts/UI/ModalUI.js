@@ -9,7 +9,7 @@ cc.Class({
     onLoad: function () {
 
     },
-
+    // ??? 实际作用是什么???
     onEnable: function () {
         this.mask.on('touchstart', function (event) {
             event.stopPropagation();

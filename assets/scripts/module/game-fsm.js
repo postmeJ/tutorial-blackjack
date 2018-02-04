@@ -1,4 +1,4 @@
-var State = require('state.com');
+var State = require('state.com'); // ../lib/state.com.js
 
 var instance;
 var model;

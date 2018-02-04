@@ -1,3 +1,5 @@
+// 界面好像并没有初始化,需要在哪里初始化呢???
+
 cc.Class({
     extends: cc.Component,
 
