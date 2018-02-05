@@ -21,7 +21,7 @@ cc.Class({
 
         // 手上最接近 21 点的点数（有可能超过 21 点）
         bestPoint: {
-            get: function () {
+            get: function () { // get function
                 var minMax = Utils.getMinMaxPoint(this.cards);
                 return minMax.max;
             }
@@ -29,22 +29,24 @@ cc.Class({
 
         // 牌型，不考虑是否爆牌
         hand: {
+            // 对于牌型的逻辑可以写在这里,但是这是可调用的方法还是只是`属性`???
             get: function () {
                 var count = this.cards.length;
                 if (this.holeCard) {
                     ++count;
                 }
-                if (count >= 5) {
+                if (count >= 5) { // 五小龙
                     return Types.Hand.FiveCard;
                 }
-                if (count === 2 && this.bestPoint === 21) {
-                    return Types.Hand.BlackJack;
+                if (count === 2 && this.bestPoint === 21) { // 黑杰克
+                    return Types.Hand.BlackJack; // enum当成属性玩
                 }
                 return Types.Hand.Normal;
             }
         },
 
         canReport: {
+            // 除了普通牌型之外
             get: function () {
                 return this.hand !== Types.Hand.Normal;
             },
@@ -57,9 +59,10 @@ cc.Class({
         },
         state: {
             default: ActorPlayingState.Normal,
-            notify: function (oldState) {
+            // http://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html?h=notify
+            notify: function (oldState) { 
                 if (this.state !== oldState) {
-                    this.renderer.updateState();
+                    this.renderer.updateState(); // 触发指定的方法
                 }
             },
             type: ActorPlayingState,
@@ -69,7 +72,7 @@ cc.Class({
 
     init: function () {
         this.ready = true;
-        this.renderer = this.getComponent('ActorRenderer');
+        this.renderer = this.getComponent('ActorRenderer'); // 在init的时候才获得renderer,在state中有使用到
     },
 
     addCard: function (card) {
@@ -108,6 +111,7 @@ cc.Class({
     },
 
     reset: function () {
+        // 手上的卡清空,所有状态重置为初始值
         this.cards = [];
         this.holeCard = null;
         this.reported = false;
